@@ -20,7 +20,7 @@ const handler = serverless(server);
 
 exports.handler = async (event: any, context: any) => {
   if (!cacheNest) {
-    createNestServer(server)
+    await createNestServer(server)
       .then(() => console.log('Nest Ready'))
       .catch((err) => console.error('Nest broken', err));
     cacheNest = true;
