@@ -1,6 +1,6 @@
 [build]
     command ="yarn build:netlify"
-    function="dist"
+    functions="dist"
 
 [[redirects]]
     from = "/*"
