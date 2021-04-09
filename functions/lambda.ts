@@ -3,11 +3,12 @@ import { AppModule } from '../src/app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import * as express from 'express';
 import * as serverless from 'serverless-http';
+import { Express } from 'express-serve-static-core';
 
 const server = express();
 let cacheNest = false;
 
-const createNestServer = async (expressInstance) => {
+const createNestServer = async (expressInstance: Express) => {
   const app = await NestFactory.create(
     AppModule,
     new ExpressAdapter(expressInstance),
@@ -16,7 +17,7 @@ const createNestServer = async (expressInstance) => {
   await app.init();
 };
 
-const handler = serverless(server);
+const appServer = serverless(server);
 
 exports.handler = async (event: any, context: any) => {
   if (!cacheNest) {
@@ -26,5 +27,5 @@ exports.handler = async (event: any, context: any) => {
     cacheNest = true;
   }
 
-  return await handler(event, context);
+  return await appServer(event, context);
 };
