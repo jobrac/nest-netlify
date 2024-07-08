@@ -27,7 +27,7 @@
     "@nestjs/platform-express": "^7.6.18",
     "express": "^4.19.2",
     "reflect-metadata": "^0.1.14",
-    "rimraf": "^5.0.7",
+    "rimraf": "^5.0.8",
     "rxjs": "^6.6.7",
     "serverless-http": "^3.2.0"
   },
